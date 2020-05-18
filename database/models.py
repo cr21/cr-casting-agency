@@ -18,6 +18,7 @@ def setup_db(app,database_path = database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
+    # migrate = Migrate(app,db)
     db.create_all()
 
 def db_drop_and_create_all():
@@ -100,13 +101,20 @@ Attribute :
             gender
 """
 
+# class Actor1(db.Model):
+#     __tablename__ = 'actors1'
+
+#     id = Column(Integer, primary_key = True)
+    
 class Actor(db.Model):
     __tablename__ = 'actors'
 
     id = Column(Integer, primary_key = True)
-    name = Column(String(120),nullable = False)
+    name = Column(String(100),nullable = False)
     age = Column(Integer)
-    gender = Column(String,nullable = False)
+    
+    gender = Column(String)
+
     movies = db.relationship('Movie',backref='Actor',lazy = True, cascade = "save-update, delete-orphan",passive_deletes = True) 
 
     def __init__(self,name,age,gender):
