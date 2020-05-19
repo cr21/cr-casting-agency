@@ -30,6 +30,15 @@ def db_drop_and_create_all():
     # db.create_all()
     # db_init_records()
 
+def test_db_drop_and_create_all():
+    '''drops the database tables and starts fresh
+    can be used to initialize a clean database
+    '''
+    
+    db.drop_all()
+    db.create_all()
+    db_init_records()
+
 def db_init_records():
     '''this will initialize the database with some test records.'''
 
