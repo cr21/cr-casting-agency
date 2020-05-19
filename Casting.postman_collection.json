@@ -39,7 +39,58 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"Cocktail2\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":5\n  }"
+							"raw": "{\n    \"title\":\"Jerry1\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "create movies"
+					},
+					"response": []
+				},
+				{
+					"name": "post /Movies Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "814b5b34-722f-42a9-8fa5-bfe473ce8770",
+								"exec": [
+									"const moment = require('moment');",
+									"pm.globals.set(\"timestamp\", moment().format(\"MM/DD/YYYY\"));",
+									"",
+									"",
+									"var current_timestamp = new Date();",
+									"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Jerry1\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
 						},
 						"url": {
 							"raw": "http://0.0.0.0:8080/movies",
@@ -61,6 +112,74 @@
 				},
 				{
 					"name": "Post create actor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Deepika\",\n    \"age\":22,\n    \"gender\": \"Female\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "create actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "Post create actor Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Deepika\",\n    \"age\":22,\n    \"gender\": \"Female\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "create actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "Post create actor Copy Copy",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -173,15 +292,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://cr-casting-agency.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"cr-casting-agency",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -321,7 +438,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA5ODkwMDM0OTczMTgyMjM0OTUyIiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTgzMDA2NywiZXhwIjoxNTg5OTE2NDY3LCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyJdfQ.tHPSX2hVtCKm4cIUiBcrvs0VOppIQTlvGpnaw63hm0aJt7V8SCqW1ndKggBYhR-6zBWhTe1UG5laPdejLQ00q9klMHpljUq8tth9XrHQuRFGVoe_xSJloIt191L_u8FL1MA6xZoOU8iK7u4W6-BMMpuVrjzhGwazlmcYaAMfY7ADM_zeh58tIupbP7gtO9W5MZSnhlPN2HPPXftHnW_GB5DLmj8rRF1aehH6wy2QCRrmNlBlprKZpPKRWaw3OH_FAxD_zvck97OtUsxgPVaionAp2D_itfyClwhL5NVwrZBxqOFlegWrnTqXWm-ZQ3o-SK3bWnwq1aPyIOBLgd6sKw",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA5ODkwMDM0OTczMTgyMjM0OTUyIiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTg2NzkyOCwiZXhwIjoxNTg5OTU0MzI4LCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyJdfQ.YILWqgkox7Klr0BWfZvPCK_LtMf97owJHvwxKheVyOlwA0BHNL1durRmFa5TZBaaVdnn9tLJslpRTvii_63l3BvIvAPQ6xlPP6atM71sNzcfVzgj1BoCIEEBdHix5rTc3NiT9r4yju1sycsbiWatFpXpCihAW82sLcmMmtQKQXwZ0UcrJSnELYLg8BXKORPIoBbkn2OtvQHZknZdWdmznI6a7SjEnc9QhXsePvRFkyin91oLb7oibEABQTwdwJ7xAdWRTk2kDg4WfdaQR3gF_uhmARiAY89hxPbBoARZuedzARVE6Aaftqi6ZdW5FRa_yEWPqCwDPuZE5ZUaGpI-sQ",
 						"type": "string"
 					}
 				]
@@ -381,7 +498,56 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Ranveer Singh\",\n    \"age\":28,\n    \"gender\": \"Male\"\n  }"
+							"raw": "{\n    \"name\":\"Jerry \",\n    \"age\":28,\n    \"gender\": \"FeMale\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "create actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "Post create actor Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01416c16-39c3-48f1-be1f-6ac8a4f4ad2e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Jerry \",\n    \"age\":28,\n    \"gender\": \"FeMale\"\n  }"
 						},
 						"url": {
 							"raw": "http://0.0.0.0:8080/actors",
@@ -445,7 +611,135 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"Ramleela\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":4\n  }"
+							"raw": "{\n    \"title\":\"TOM AND JERRY2\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "create movies"
+					},
+					"response": []
+				},
+				{
+					"name": "post /Movies Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "814b5b34-722f-42a9-8fa5-bfe473ce8770",
+								"exec": [
+									"const moment = require('moment');",
+									"pm.globals.set(\"timestamp\", moment().format(\"MM/DD/YYYY\"));",
+									"",
+									"",
+									"var current_timestamp = new Date();",
+									"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f575fa5d-3c9c-45a0-88fa-36a57991aab9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"TOM AND JERRY2\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "create movies"
+					},
+					"response": []
+				},
+				{
+					"name": "post /Movies Copy Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "814b5b34-722f-42a9-8fa5-bfe473ce8770",
+								"exec": [
+									"const moment = require('moment');",
+									"pm.globals.set(\"timestamp\", moment().format(\"MM/DD/YYYY\"));",
+									"",
+									"",
+									"var current_timestamp = new Date();",
+									"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f575fa5d-3c9c-45a0-88fa-36a57991aab9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"TOM AND JERRY2\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
 						},
 						"url": {
 							"raw": "http://0.0.0.0:8080/movies",
@@ -544,7 +838,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"RamLeela2\"\n  }"
+							"raw": "{\n    \"title\":\"JERRY\"\n  }"
 						},
 						"url": {
 							"raw": "http://0.0.0.0:8080/movies/2",
@@ -796,7 +1090,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3NDc0MjczMTA5NTc1NDkwMjI5IiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTgyOTkzMSwiZXhwIjoxNTg5OTE2MzMxLCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.MD0nmktiBVti5gMUpzeBz51AMP54AKw6133lws_7nVpAIacXk7kmDcjlOvBXoo24OLSCwZm79PGNHE8Jv9QWBVY1xqs4N5TL0Mu-TUXL3ETzh42r2T8n90oKlDupdVrmRKeE7b2ybuyg9LOvjKddjV_qHeNe4Mw3Kgn8-l2mcbR5BoiwDArmlxJ7iKhLWKHmttShDjaqGdW8dJn9qy3MXo9R2MpKULwiERZTHvpfp0dxzMQQouH1JGmQJySyo79885RRctCpXqbgQdYSlHSg-ZKl5kfCDsA6cW565wlgHhTxmNAJM1WG5F1ASyOXeeGMG1VaOqGI6G3hwjsxa0S2_w",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3NDc0MjczMTA5NTc1NDkwMjI5IiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTg2Nzc0NywiZXhwIjoxNTg5OTU0MTQ3LCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.P2amR3yLd4lCv-5KMLBEIQ8vg9TJQMyCarIGowYyyOM4am54r6hcilTyYm-VIWoBnRHxBYFWvaiFh3PyYQff7hoL16DQVsv-fYbYvrya-i9XxjcuIR2nPNt_6C-nvDxGggkS4efjcqahxTYprr0VhK6b7b_NY-zCMY2xuQwM5khoeeFcviYWxR_7st7w-crrp1rVFH70w2n66IgY5Z11p5K5bnt4ElPh0IIb1On0fmqSZcqUxqwBNM4SGpMTwjkNqP5crBsuhwcUV_y4Ud4Ly82gzlKqXtDOMIYE4QE2LAWMV2G9axuCmWatYpuPwx-M6thpjVi4Q6HReMpUzgmywA",
 						"type": "string"
 					}
 				]
@@ -1002,8 +1296,8 @@
 							"script": {
 								"id": "c7603db4-467a-486f-af5f-de11c8b4d476",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
 									"});",
 									""
 								],
@@ -1271,7 +1565,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3NDI0ODkwNjMyNDcyNDI3MTc2IiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTgzMDI3NiwiZXhwIjoxNTg5OTE2Njc2LCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.UtuEEkE-pAklBsh9i4e2rXILKMrR9pa_kdnGtizfde4VvBNSCOzF0nC8sK1Fl4_SKDIe3jrQU8YNJp0sSCBKnYFfQ3k1I3QQnQna2NcB1aA2cykoUEcucy7Gyr8-QLm-_HAeZwh_R3EbbTgMCxw2IMzglvcyIqjcfmMT6F9EwjofW3wDHroUwYFbsyRbe2oM0QxVgQ0lOqqDhiXQe9SbUAxa8QhX6LIYx3piCZqN23nfBOHVmvE_n8O2EJNnYrce6tAyFBhMlhL4LoOkF-AS13fYJ4dQjWC210iGPDrK9Lk0dshP9KrqVr6vqlEd14I1B30H1zf3GLh_-p5lOEM6XQ",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3NDI0ODkwNjMyNDcyNDI3MTc2IiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTg2ODEzOCwiZXhwIjoxNTg5OTU0NTM4LCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.SBDZBdfOE1INC3ydMnnKUR-4bwwcen1hFvgbLxYOJb0pVT8Ltts-FVvtB9R0voplZxT1leUGC3uuWbB_z-eZlt-isuHk_eMvxuVkbV3TSrBiLtZn026puTHAqYeKrUpngNi5JXnmcfnvlu-jz5R0c27uKF9dNoDn5TnbL9P-qef74Qs6wSHPwI_jO5jNzVjZDIxtft7cETmoa70AGx8pYR1kkNbppiwK6ujbeixAh8jBEyP4_W02sXFPg7ogsJlp7jmMiWwmZjHkInp47wEed6sMcR_gLc5hvzaUY--tcNWyG8a50WOPunn39RCMtKazv1vpYImaxy-SG9q2RhHa8g",
 						"type": "string"
 					}
 				]
