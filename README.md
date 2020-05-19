@@ -74,24 +74,19 @@ export casting_director='Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6
 
 export producer='Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjB6bUVPcXM0elFydUFMaEFVcDdWWSJ9.eyJpc3MiOiJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3NDc0MjczMTA5NTc1NDkwMjI5IiwiYXVkIjpbImNhc3RpbmdhcHAiLCJodHRwczovL2NyLWZ1bGwtc3RhY2suYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4OTg2Nzc0NywiZXhwIjoxNTg5OTU0MTQ3LCJhenAiOiJFaE51bHNwOWJMZkloY2ExTDVIRHRwVWNWWjdiVUF5YyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.P2amR3yLd4lCv-5KMLBEIQ8vg9TJQMyCarIGowYyyOM4am54r6hcilTyYm-VIWoBnRHxBYFWvaiFh3PyYQff7hoL16DQVsv-fYbYvrya-i9XxjcuIR2nPNt_6C-nvDxGggkS4efjcqahxTYprr0VhK6b7b_NY-zCMY2xuQwM5khoeeFcviYWxR_7st7w-crrp1rVFH70w2n66IgY5Z11p5K5bnt4ElPh0IIb1On0fmqSZcqUxqwBNM4SGpMTwjkNqP5crBsuhwcUV_y4Ud4Ly82gzlKqXtDOMIYE4QE2LAWMV2G9axuCmWatYpuPwx-M6thpjVi4Q6HReMpUzgmywA'
 ```
-<<<<<<< HEAD
 
 please create database according to setting given or you can cahnge accordingly 
+
 please run if working with new database setting No table
+
      python3 manage.py db init 
-     python3 manage.py db migrate 
+     
+     python3 manage.py db migrate
+     
      python3 manage.py db upgrade 
+     
 
 To run the server, execute: run this in your terminal where code is : python3 app.py
-=======
-please create database according to setting given or you can cahnge accordingly
-please run if working with new database setting No table
-         python3 manage.py db init
-        python3 manage.py db migrate
-        python3 manage.py db upgrade
->>>>>>> master
-To run the server, execute:
-run this in your terminal where code is :  python3 app.py
 
 
 The `--reload` flag will detect file changes and restart the server automatically.
