@@ -125,171 +125,216 @@ GET ...
 POST ...
 DELETE ...
  
-GET '/categories'
-- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
-- Request Arguments: None
-- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs.
-{'1' : "Science",
-'2' : "Art",
-'3' : "Geography",
-'4' : "History",
-'5' : "Entertainment",
-'6' : "Sports"}
-
-
-GET ‘/questions’
-- Fetches a List of Questions Available
+GET ‘/movies’
+- Fetches a List of Movies Available
 - Request Arguments: page , for fetching the data for particular page
-- Returns: Returns Object with details about categories, current_category, questions list and total_no_of questions.
+- Returns: Returns Object with details about movie id, title, release_date and total_record
 
 Sample response format
  {
-     "categories": {
-         "1": "Science",
-         "2": "Art",
-         "3": "Geography",
-         "4": "History",
-         "5": "Entertainment",
-         "6": "Sports"
-     },
-     "current_category": null,
-     "questions": [
-         {
-             "answer": "Spain",
-             "category": null,
-             "difficulty": 1,
-             "id": 30,
-             "question": "Who won 2010 Worldcup?"
-         },
-         {
-             "answer": "Italy",
-             "category": 6,
-             "difficulty": 1,
-             "id": 31,
-             "question": "Who won 2006 Worldcup?"
-         }
-     ],
-     "total_questions": 26
- }
+    "movies": [
+        {
+            "id": 1,
+            "release_date": "Mon, 18 May 2020 00:00:00 GMT",
+            "title": "Matthew first Movie"
+        },
+        {
+            "id": 2,
+            "release_date": "Mon, 18 May 2020 00:00:00 GMT",
+            "title": "Matthew second Movie"
+        }
+    ],
+    "status_code": 200,
+    "success": true,
+    "total_record": 2
+}
 
 
-GET ‘/categories/<int:id>/questions’
-- Fetches a List of Questions for particular category received from id parameter in request
+GET ‘/actors
+- Fetches a List of Actors Available
+- Request Arguments: page , for fetching the data for particular page
+- Returns: Returns Object with details about movie id, age, gender, name and total_Record
+
+Sample response format
+ {
+    "actors": [
+        {
+            "age": 22,
+            "gender": "Female",
+            "id": 1,
+            "name": "Deepika"
+        }
+    ],
+    "status_code": 200,
+    "success": true,
+    "total_record": 1
+}
+
+GET ‘/movies/<int:id>’
+- Fetches a List of Movies for particular  id parameter in request
 - Request Arguments: page (OPTIONAL) , for fetching the data for particular page
-- Returns: Returns Object with details about current_category, questions list and total_no_of questions, status_code,success
+- Returns: Returns Object with details about actor details, id, release_date, title 
 
 -Sample Request Format:
 
- http://localhost:5000/categories/6/questions?page=1
+http://0.0.0.0:8080/movies/1/details
 
 -Sample Responseformat:
  {
-     "current_category": null,
-     "questions": [
-         {
-             "answer": "Brazil",
-             "category": 6,
-             "difficulty": 3,
-             "id": 10,
-             "question": "Which is the only team to play in every soccer World Cup tournament?"
-         },
-         {
-             "answer": "Uruguay",
-             "category": 6,
-             "difficulty": 4,
-             "id": 11,
-             "question": "Which country won the first ever soccer World Cup in 1930?"
-         }],
-     "status_code": 200,
-     "success": true,
-     "total_questions": 10
- }
+    "movie": {
+        "actor": {
+            "age": 25,
+            "gender": "Male",
+            "id": 1,
+            "name": "Matthew"
+        },
+        "id": 1,
+        "release_date": "Mon, 18 May 2020 00:00:00 GMT",
+        "title": "Matthew first Movie"
+    },
+    "status_code": 200,
+    "success": true
+}
 
-DELETE ‘/questions/<int:id>’
-- Delete Question based on specific Question id
-- Request Arguments: id (Required) -Question Id
+
+GET ‘/actors/<int:id>’
+- Fetches a List of Actors for particular  id parameter in request
+- Request Arguments: page (OPTIONAL) , for fetching the data for particular page
+- Returns: Returns Object with details about id, age, gender, movie details 
+
+-Sample Request Format:
+
+http://0.0.0.0:8080/actors/1/details
+
+-Sample Responseformat:
+{
+    "actor": {
+        "age": 20,
+        "gender": "Male",
+        "id": 3,
+        "movies": [
+            {
+                "id": 3,
+                "release_date": "Mon, 18 May 2020 00:00:00 GMT",
+                "title": "Matthew third Movie"
+            },
+            {
+                "id": 4,
+                "release_date": "Mon, 18 May 2020 00:00:00 GMT",
+                "title": "Matthew3 third Movie"
+            }
+        ],
+        "name": "1Matthew"
+    },
+    "status_code": 200,
+    "success": true
+}
+
+
+DELETE ‘/movies/<int:id>’
+- Delete Movie based on specific Movie id
+- Request Arguments: id (Required) -Movie Id
 - Returns: object with status_code and success
 
 Sample Request :
-  http://localhost:5000/questions/11
+  http://0.0.0.0:8080/movies/1
 
 Sample Response :
   {
-      "status_code": 200,
-      "success": true
-  }
- 
-POST '/questions'
-- This endpoint is used for search as well as creating new question
+    "movie_id": 1,
+    "status_code": 200,
+    "success": true
+}
+
+
+DELETE ‘/actors/<int:id>’
+- Delete Actor based on specific Actor id
+- Request Arguments: id (Required) -Actor Id
+- Returns: object with status_code and success
+
+Sample Request :
+  http://0.0.0.0:8080/actors/1
+
+Sample Response :
+  {
+    "actor_id": 1,
+    "status_code": 200,
+    "success": true
+}
+
+POST '/actors'
+- This endpoint is used for creating new actor
  
 Request body:
+    {
+    "name":"Tom ",
+    "age":28,
+    "gender": "Male"
+  }
+    Add Authorization : 'Bearer TOKEN'
+
  
-   For Creating New Question
- 
-   Request Body : {
-           "question": "Who won 2006 Worldcup?",
-           "answer": "Italy",
-           "difficulty": 1,
-           "category": "6"
-   }
- 
-   For Seaching the Question
-           Request Body :
-                   {
-                   "searchTerm":"1930"
-                   }
   
 Returns:
-   Search Result Response:
-       {
-           "current_category": null,
-           "questions": [
-               {
-                   "answer": "Agra",
-                   "category": 3,
-                   "difficulty": 2,
-                   "id": 15,
-                   "question": "The Taj Mahal is located in which Indian city?"
-               }
-           ],
-           "total_questions": 1
-       }
   
-    Creating New Question:
-       Response:
-       {
-           "status_code": 200,
-           "success": true,
-           "total_questions": 24
-       }
-  
-POST: /quizzes
- 
-End point created for getting a question for quiz based on category  .
-This method will give the question based on the category and it will also exclude the question already answered in current quiz.
- 
-Request Body:
-	Previous_questions :List of Questions,
-	Quiz_category : object that have category id
- 
-Sample RequestBody:
     {
-        "previous_questions": [],
-        "quiz_category":  {"type": "click", "id": 0}
-    }
- 
-Sample ResponseBody:
-	{
-        "question": {
-            "answer": "Jackson Pollock",
-            "category": 2,
-            "difficulty": 2,
-            "id": 19,
-            "question": "Which American artist was a pioneer of Abstract Expressionism, and a leading exponent of action painting?"
+        "actor": {
+            "age": 28,
+            "gender": "Male",
+            "id": 5,
+            "name": "Tom "
         },
-        "status": 200,
+        "message": "Tom  created",
+        "status_code": 200,
         "success": true
     }
+
+POST: /Movies
+ 
+
+- This endpoint is used for creating new Movie
+ http://0.0.0.0:8080/movies
+Request body:
+    {
+    "title":"TOM AND JERRY",
+    "release_date": "{{current_timestamp}}",
+   "actor_id":1
+  }
+    Add Authorization : 'Bearer TOKEN'
+
+ 
+  
+Returns:
+    {
+        "Movie": {
+            "id": 5,
+            "release_date": "Tue, 19 May 2020 05:47:25 GMT",
+            "title": "TOM AND JERRY"
+        },
+        "message": "TOM AND JERRY created",
+        "status_code": 200,
+        "success": true
+    }
+
+
+PATCH ‘/movies/<int:id>’
+- EDIT  Movie for particular  id parameter in request
+- Returns: Returns Object with updated movie record and status code 
+
+-Sample Request Format:
+PATCH
+http://0.0.0.0:8080/movies/1/
+add Authorization Header : 'Bearer Token'
+-Sample Responseformat:
+ {
+    "movie": {
+        "id": 1,
+        "release_date": "Mon, 18 May 2020 00:00:00 GMT",
+        "title": "JERRY"
+    },
+    "status_code": 200,
+    "success": true
+}
 
 
 ```
