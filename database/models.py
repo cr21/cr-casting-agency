@@ -26,9 +26,9 @@ def db_drop_and_create_all():
     can be used to initialize a clean database
     '''
     
-    db.drop_all()
-    db.create_all()
-    db_init_records()
+    # db.drop_all()
+    # db.create_all()
+    # db_init_records()
 
 def db_init_records():
     '''this will initialize the database with some test records.'''
