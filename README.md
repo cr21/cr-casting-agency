@@ -5,9 +5,14 @@ Udacity Full Stack Developer Nanodegree Project Capstone Projects
 This is the last project of the Udacity-Full-Stack-Nanodegree Course. It covers following technical topics in a single app:
 
 Database modeling with postgres & sqlalchemy check -> database/models.py
+
 REST API  for CRUD Operations on database with Flask. check -> app.py)
+
 Automated unit testing for test driven development with Unittest (check-> test_app)
+
+
 Authorization & Role based Authentification with Auth0 (check Auth/auth.py)
+
 Deployment on Heroku 
 
 
