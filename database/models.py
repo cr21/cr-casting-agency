@@ -19,15 +19,16 @@ def setup_db(app,database_path = database_path):
     db.app = app
     db.init_app(app)
     # migrate = Migrate(app,db)
-    db.create_all()
+    # db.create_all()
 
 def db_drop_and_create_all():
     '''drops the database tables and starts fresh
     can be used to initialize a clean database
     '''
-    db.drop_all()
-    db.create_all()
-    db_init_records()
+    
+    # db.drop_all()
+    # db.create_all()
+    # db_init_records()
 
 def db_init_records():
     '''this will initialize the database with some test records.'''
@@ -101,11 +102,7 @@ Attribute :
             gender
 """
 
-# class Actor1(db.Model):
-#     __tablename__ = 'actors1'
 
-#     id = Column(Integer, primary_key = True)
-    
 class Actor(db.Model):
     __tablename__ = 'actors'
 
@@ -162,7 +159,7 @@ class Movie(db.Model):
     title = Column(String(120), nullable = False)
     release_date = Column(DateTime, nullable = False)
     actor_id = Column(Integer, ForeignKey('actors.id', ondelete = "CASCADE"))
-
+    fee = Column(Integer)
 
     def insert(self):
     
